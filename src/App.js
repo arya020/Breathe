@@ -5,8 +5,6 @@ import './App.css';
 import 'chrome-extensions';
 import { createContext,useState } from 'react';
 
-import Switch from 'react-switch';
-
 export const ThemeContext = createContext(null);
 
 
@@ -14,9 +12,8 @@ function App() {
 
   const [theme,setTheme] = useState("light");
 
-  
+   /* eslint-disable no-undef */
   function test(){
-    /* eslint-disable no-undef */
     chrome.tabs.query({active: true, currentWindow:true}, tabs=>{
       const activeTabId = tabs[0].id;
       chrome.scripting.executeScript(
@@ -28,6 +25,7 @@ function App() {
       )
     })
   }
+  
 
 
   const changeTheme = () =>{

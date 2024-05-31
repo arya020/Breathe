@@ -1,8 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import  useInterval  from '../hooks/useInterval';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const Circle = () =>{
 
