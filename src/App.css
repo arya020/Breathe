@@ -1,39 +1,135 @@
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar-nav{
+  width: 100%;
+  height: 70px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-size: 1.4rem;
+  text-indent: 1%;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0.35em;
+}
+#dark .navbar-nav{
+  background-color: #363636;
+  color: rgb(227, 253, 255);
+
+}
+#light .navbar-nav{
+  background-color: rgba(33, 155, 155, 0.215);
+  color: rgb(28, 66, 69);
+}
+.form-check-input:checked{
+  background-color: rgb(57, 133, 140);
+}
+
+.container-fluid {
+  width: 100%;
+  height: 100vh;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-color: rgb(245, 248, 247);
+  flex-direction: column;
+}
+
+#dark .container-fluid {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b1b1b;
+  flex-direction: column;
+
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(rgb(57, 133, 140), rgb(173, 197, 197));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5em;
+  position: relative;
+}
+
+.text {
+  color: aliceblue;
+  font-size: large;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: rgb(71, 113, 116) ;
+  margin-top: 0.25em;
+  border: none;
+}
+
+.plus, .subtract {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(71, 113, 116);
+  padding-top: 20%;
+  color: aliceblue;
+  margin-top: 100%;
+  border-radius: 20%;
+  border: none;
+  font-size: larger;
+}
+
+.subtract {
+  background-color: rgb(71, 114, 117);
+}
+
+.input {
+  width: 250px;
+  margin-top: 1em;
+  margin-bottom: 20px;
+}
+
+#dark .input {
+  margin-top: 1em;
+  color: aliceblue;
+}
+
+#dark .circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: radial-gradient(#1b1b1b,#242424);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3.5em;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+  @keyframes expand {
+    0% {
+     
+      transform: scale(0.8);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(0.8);
+    }
+
   }
-  to {
-    transform: rotate(360deg);
+  .start{
+   
+    animation: expand 5s infinite;
+    
   }
-}
+
+

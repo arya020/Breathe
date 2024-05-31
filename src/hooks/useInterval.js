@@ -3,10 +3,7 @@ import { useEffect, useRef } from 'react';
 const useInterval = (callback, delay) => {
   const savedCallback = useRef();
 
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
+  savedCallback.current = callback;
   useEffect(() => {
     const tick = () => {
       savedCallback.current();

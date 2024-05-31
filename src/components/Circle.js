@@ -1,36 +1,42 @@
 import React,{useEffect, useState} from 'react';
-import './circle.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import  useInterval  from '../hooks/useInterval';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import './Circle.css'
 
 const Circle = () =>{
 
+
     const [duration,setDuration] = useState(5);
-    const [display,setDisplay] = useState("Exhale");
+    const [display,setDisplay] = useState("Inhale");
+    const [play,setPlay] = useState("paused");
+    
     
     useEffect(()=>{
     
     setDuration(duration);
-    document.getElementById('Circle').style.animationDuration = (duration*1.9) +"s";
+    setPlay("paused");
+    setDisplay("Exhale");
+    document.getElementById('Circle').style.animationFillMode = "forwards";
+    document.getElementById('Circle').style.animationPlayState = "paused";
     
     },[duration]);
 
+    
+
     useInterval(()=>{
+      
+        if(display==="Inhale"){
+            setDisplay("Exhale");
+        }
+        else{
+            setDisplay("Inhale");
+        }
+    
 
-            setDuration(duration);
-            if(display==="Inhale"){
-                setDisplay("Exhale");
-            }
-            else{
-                setDisplay("Inhale");
-            }
-        
-    },(duration*1000));
+    },((duration)*1000));
    
-    const handleChange= (event) => {
-        setDuration(event.target.value);
-    }
-
     const increment = () =>{
         setDuration((prevDuration) => prevDuration + 1);
     }
@@ -39,24 +45,50 @@ const Circle = () =>{
         setDuration((prevDuration) => prevDuration - 1);
     }
 
+    const onclick = () =>{
+
+        if(play === "paused"){
+            setPlay("running");
+            document.getElementById('Circle').style.animationPlayState ="running";
+            document.getElementById('Circle').style.animationDuration = (duration*2) +"s";
+        }
+        else{
+            setPlay("paused");
+            document.getElementById('Circle').style.animationPlayState = "paused";
+
+        }
+    }
+
+   
 
     return(
-    <div className='container'>
-        <div id={'Circle'} className={'circle start'}>
-            <p className='text'>{display}</p>
+        <div className='container-fluid'>
+             
+            <div className='circle start 'id='Circle'>
+                <p>{play==="running" ? display:"Start"}</p>
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
+           <div className='btn-group btn-group-spaced' role='group' aria-label='Button-group'>
+            <button onClick={increment} type="button" class="btn btnplus btn-primary col-4">+</button>
+            &nbsp;&nbsp;&nbsp;
+            <button onClick={onclick} type="button" class="btn btnplay btn-primary col-4">
+                <i class="bi bi-play"></i>
+            </button>
+            &nbsp;&nbsp;&nbsp;
+            <button onClick={decrement} type="button" class="btn btnsubtract btn-primary col-4">-</button>
+            </div>
+            <div className='input'>
+            <p style={{font:'Monospace', fontSize:'22px'}}>Inhale for {duration}s Exhale for {duration}s</p>
+            <br/>
+            <p style={{font:'Monospace', fontSize:'12px',paddingLeft:"80px"}}>Created by Arya</p>
+            </div>
         </div>
-
-        {/* write the onclick event before classname*/}
-        <button onClick={increment} className='plus' value={duration} >+</button>
-        <button onClick={decrement} className='subtract' value={duration}>-</button>
         
-       <div className='input'>
-        <p style={{font:'Monospace', fontSize:'22px',color:' rgb(30, 66, 69)'}}>Inhale for {duration}s Exhale for {duration}s</p>
-        <p style={{font:'Monospace', fontSize:'12px',paddingLeft:"78px"}}>Created by Arya</p>
-        </div>
-    </div>
+  
        
-    );
+   );
 
 
 }
