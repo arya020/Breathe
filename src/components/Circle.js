@@ -46,6 +46,9 @@ const Circle = () =>{
 
         if(play === "paused"){
             setPlay("running");
+            //setDisplay("Wait");
+            document.getElementById('Circle').style.animationFillMode = "forwards";
+            console.log(document.getElementById('Circle').style.animationFillMode)
             document.getElementById('Circle').style.animationPlayState ="running";
             document.getElementById('Circle').style.animationDuration = (duration*2) +"s";
         }
