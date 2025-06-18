@@ -71,13 +71,13 @@ const Circle = () =>{
             <br></br>
             <br></br>
            <div className='btn-group btn-group-spaced' role='group' aria-label='Button-group'>
-            <button onClick={increment} type="button" class="btn btnplus btn-primary col-4">+</button>
+            <button onClick={increment} type="button" class="ope">+</button>
             &nbsp;&nbsp;&nbsp;
-            <button onClick={onclick} type="button" class="btn btnplay btn-primary col-4">
+            <button onClick={onclick} type="button" class="ope">
                 <i class="bi bi-play"></i>
             </button>
             &nbsp;&nbsp;&nbsp;
-            <button onClick={decrement} type="button" class="btn btnsubtract btn-primary col-4">-</button>
+            <button onClick={decrement} type="button" class="ope">-</button>
             </div>
             <div className='input'>
             <p style={{font:'Monospace', fontSize:'22px'}}>Inhale for {duration}s Exhale for {duration}s</p>
