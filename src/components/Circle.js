@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import  useInterval  from '../hooks/useInterval';
-import { width } from '@fortawesome/free-solid-svg-icons/fa0';
 
 const Circle = () =>{
 
