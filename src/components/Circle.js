@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import  useInterval  from '../hooks/useInterval';
+import { width } from '@fortawesome/free-solid-svg-icons/fa0';
 
 const Circle = () =>{
 
@@ -14,9 +15,10 @@ const Circle = () =>{
     
     setDuration(duration);
     setPlay("paused");
-    setDisplay("Exhale");
+    setDisplay("Inhale");
     document.getElementById('Circle').style.animationFillMode = "forwards";
     document.getElementById('Circle').style.animationPlayState = "paused";
+    document.getElementById('Circle').style.animationDuration = (duration*2) +"s";
     
     },[duration]);
 
@@ -32,8 +34,8 @@ const Circle = () =>{
         }
     
 
-    },((duration)*1000));
-   
+    },play === "running" ? (duration * 1000) : null);
+
     const increment = () =>{
         setDuration((prevDuration) => prevDuration + 1);
     }
@@ -64,25 +66,24 @@ const Circle = () =>{
     return(
         <div className='container-fluid'>
              
-            <div className='circle start 'id='Circle'>
+            <div className='circle start' id='Circle'>
                 <p>{play==="running" ? display:"Start"}</p>
             </div>
             <br></br>
             <br></br>
             <br></br>
            <div className='btn-group btn-group-spaced' role='group' aria-label='Button-group'>
-            <button onClick={increment} type="button" class="btn btnplus btn-primary col-4">+</button>
+            <button onClick={increment} type="button" class="btn btnplus btn-primary col-4 " style={{width: '3em'}}>+</button>
             &nbsp;&nbsp;&nbsp;
             <button onClick={onclick} type="button" class="btn btnplay btn-primary col-4">
-                <i class="bi bi-play"></i>
+                { play !== "running" ? <i class="bi bi-play"></i> : <i class="bi bi-pause"></i> }
             </button>
             &nbsp;&nbsp;&nbsp;
-            <button onClick={decrement} type="button" class="btn btnsubtract btn-primary col-4">-</button>
+            <button onClick={decrement} type="button" class="btn btnsubtract btn-primary col-4" style={{width: '3em'}}>-</button>
             </div>
             <div className='input'>
             <p style={{font:'Monospace', fontSize:'22px'}}>Inhale for {duration}s Exhale for {duration}s</p>
             <br/>
-            <p style={{font:'Monospace', fontSize:'12px',paddingLeft:"80px"}}>Created by Arya</p>
             </div>
         </div>
         
